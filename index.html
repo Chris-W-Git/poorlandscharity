@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moulton Poor Lands Charity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F3EC;
+    --parchment: #EDE6D6;
+    --gold: #A67C3D;
+    --gold-light: #C4993E;
+    --dark: #1C1A17;
+    --mid: #4A4238;
+    --muted: #7A6E60;
+    --green: #2D4A2D;
+    --green-light: #3D6B3D;
+    --border: #C8B89A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── HEADER / HERO ── */
+  header {
+    background: var(--green);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .header-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image:
+      repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .hero {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 6rem 2rem 5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+  }
+
+  .hero-ornament span { display: block; width: 60px; height: 1px; background: var(--gold-light); }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--gold-light);
+    margin: 0 auto 2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.78);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    transition: background 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--gold-light); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    margin: 5rem 0;
+    background: #fff;
+  }
+
+  .about-cell {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .about-cell:last-child { border-right: none; }
+
+  .about-icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+
+  .about-cell h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .about-cell p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    color: var(--dark);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+
+  .ruled { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; }
+
+  /* ── HISTORY ── */
+  .history-section {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 5rem;
+    padding: 4rem 0;
+  }
+
+  .history-body p {
+    margin-bottom: 1.2rem;
+    color: var(--mid);
+  }
+
+  .history-body p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.12em;
+    padding-top: 0.08em;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .timeline-item {
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-year {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-text {
+    font-size: 0.92rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .sidebar-pullquote {
+    background: var(--green);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .sidebar-pullquote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+  }
+
+  .sidebar-pullquote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ── WHAT WE DO ── */
+  .what-section {
+    background: var(--parchment);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem;
+    margin: 0 -2rem;
+  }
+
+  .what-inner { max-width: 1100px; margin: 0 auto; }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .what-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .what-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .what-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── APPLY ── */
+  .apply-section {
+    padding: 5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .eligibility-list {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .eligibility-list li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--mid);
+  }
+
+  .eligibility-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.85rem;
+  }
+
+  .apply-form-area {
+    background: var(--green);
+    padding: 2.5rem;
+    color: #fff;
+  }
+
+  .apply-form-area h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .apply-form-area .form-intro {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.4rem;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border 0.2s;
+    border-radius: 0;
+    appearance: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--gold-light); }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-group select option { background: var(--green); color: #fff; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover { background: var(--gold-light); }
+
+  .form-notice {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--dark);
+    padding: 4rem 2rem;
+    margin: 0 -2rem;
+    text-align: center;
+  }
+
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+
+  .contact-section .section-label { color: var(--gold-light); }
+
+  .contact-section .section-title { color: #fff; }
+
+  .contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .contact-item h5 {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+  }
+
+  .contact-item p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .contact-note {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-right {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .charity-number {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    margin-top: 0.4rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 780px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-strip { grid-template-columns: 1fr; }
+    .about-cell { border-right: none; border-bottom: 1px solid var(--border); }
+    .history-section { grid-template-columns: 1fr; gap: 3rem; }
+    .apply-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-details { gap: 2rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero > *:nth-child(5) { animation-delay: 0.65s; }
+  .hero > *:nth-child(6) { animation-delay: 0.75s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-pattern"></div>
+  <nav>
+    <div class="nav-logo">Moulton Poor Lands Charity</div>
+    <ul class="nav-links">
+      <li><a href="#history">History</a></li>
+      <li><a href="#what-we-do">What We Do</a></li>
+      <li><a href="#apply">How to Apply</a></li>
+      <li><a href="#download-form">Download Form</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <div class="hero-ornament">
+      <span></span>Est. from time immemorial<span></span>
+    </div>
+    <h1>Moulton <em>Poor Lands Charity</em></h1>
+    <p class="hero-sub">Moulton &nbsp;·&nbsp; Moulton Chapel &nbsp;·&nbsp; Moulton Seas End &nbsp;·&nbsp; Lincolnshire</p>
+    <div class="hero-divider"></div>
+    <p>A historic charity serving the Parish of Moulton, Lincolnshire — providing grants and financial support to those in need, rooted in centuries of community care.</p>
+    <a href="#apply" class="hero-cta">Apply for Support</a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <div class="about-cell">
+      <svg class="about-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="20" width="32" height="22" rx="1" stroke="#2D4A2D" stroke-width="1.5" fill="none"/>
+        <path d="M4 22L24 6L44 22" stroke="#A67C3D" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="18" y="30" width="12" height="12" fill="#2D4A2D" opacity="0.2" rx="1"/>
+        <rect x="20" y="32" width="8" height="10" fill="#2D4A2D" rx="1"/>
+      </svg>
+      <h3>Agricultural Endowment</h3>
+      <p>The Trust's wealth is held in agricultural land, providing sustainable income for charitable work across generations.</p>
+    </div>
+    <div class="about-cell">
+      <svg class="about-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="18" r="8" stroke="#2D4A2D" stroke-width="1.5" fill="none"/>
+        <path d="M10 42c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#A67C3D" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="24" cy="18" r="3" fill="#2D4A2D" opacity="0.3"/>
+      </svg>
+      <h3>People First</h3>
+      <p>We support elderly residents, families in hardship, and children in the Moulton community — identified with help from schools, social workers, and local leaders.</p>
+    </div>
+    <div class="about-cell">
+      <svg class="about-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 36V20l12-10 12 10v16" stroke="#2D4A2D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M6 36h36" stroke="#A67C3D" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="20" y="26" width="8" height="10" rx="1" fill="#2D4A2D" opacity="0.25"/>
+      </svg>
+      <h3>Almshouses</h3>
+      <p>The Trust maintains almshouses providing housing to eligible residents, an enduring tradition of practical community support.</p>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <section id="history">
+    <div class="history-section">
+      <div class="history-body">
+        <p class="section-label">Our Heritage</p>
+        <h2 class="section-title ruled">A History of Charitable Care in Moulton</h2>
+
+        <p>The Moulton Poor Lands Charity has roots that reach back to a time before formal legal charities existed — a tradition of the parish caring for its poorest residents through the holding of land "from time immemorial." The poor of the parish were supported by the rents and produce from a collection of cottages and other buildings held in trust for their benefit.</p>
+
+        <p>This tradition of charitable giving was formalised through a series of important bequests. In 1633, Erasmus Amy left land to generate rent income for the poor of the parish. Just over twenty years later in 1655, William Gulson similarly left land to add to the growing endowment, helping to place community charity on a more secure and lasting footing.</p>
+
+        <p>Over the centuries, these charitable resources grew and were consolidated under the umbrella of the Moulton Poor Lands Charity, which today incorporates the Moulton Minor Charities. The Charity continues to hold its wealth primarily in agricultural land — a deliberate investment strategy chosen by the Trustees as providing the right balance between income and long-term capital growth.</p>
+
+        <p>Today the Charity works in partnership with local schools, social workers, Age UK, and religious leaders to identify those in greatest need. It provides regular payments to the elderly, specific grants to individuals and families facing hardship, and contributes to other charities providing services to the community.</p>
+      </div>
+
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year">Time Immemorial</p>
+            <p class="timeline-text">The poor of Moulton parish are supported through rent income from cottages and buildings held in community trust — among the earliest recorded charitable activity in the village.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">1561</p>
+            <p class="timeline-text">John Harrox founds a Free Grammar School in Moulton, receiving a share of the parochial charities — showing the deep connection between education and community welfare in the parish.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">1633</p>
+            <p class="timeline-text">Erasmus Amy leaves land to generate rent income specifically for the poor of Moulton parish, formalising philanthropic giving.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">1655</p>
+            <p class="timeline-text">William Gulson adds further land to the charitable endowment, strengthening the foundations of what will become the Poor Lands Charity.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">1793</p>
+            <p class="timeline-text">The Enclosure Act sees tithes commuted for land, reshaping land holding across the parish, including charitable holdings.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">1834</p>
+            <p class="timeline-text">The Poor Law Amendment Act reorganises poor relief nationally; Moulton becomes part of the Spalding Poor Law Union, but the charitable trust continues its independent work.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">Present Day</p>
+            <p class="timeline-text">The Moulton Poor Lands Charity (registered charity no. 216630), administered via Maples Solicitors LLP in Spalding, serving residents of Moulton to this day.</p>
+          </div>
+        </div>
+
+        <div class="sidebar-pullquote">
+          <blockquote>"The poor of this parish had Poor Lands and Houses, composed of fifteen cottages and other buildings, from time immemorial."</blockquote>
+          <cite>Historical Parish Record, Moulton, Lincolnshire</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- WHAT WE DO -->
+<section id="what-we-do" class="what-section">
+  <div class="what-inner">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">How We Support the Community</h2>
+    <p style="color: var(--mid); max-width: 620px; font-size: 0.95rem;">The Charity provides a range of financial support to residents of the Parish of Moulton, Lincolnshire, prioritising those who are most vulnerable or in greatest need.</p>
+
+    <div class="what-grid">
+      <div class="what-card">
+        <h4>Regular Payments</h4>
+        <p>Ongoing financial support (sometimes referred to as "the dole") is provided to elderly residents and those in persistent hardship, offering a reliable source of supplementary income.</p>
+      </div>
+      <div class="what-card">
+        <h4>Specific Grants</h4>
+        <p>One-off or time-limited grants help individuals and families facing specific financial difficulties, such as unexpected costs, household essentials, or emergencies.</p>
+      </div>
+      <div class="what-card">
+        <h4>Children & Schools</h4>
+        <p>The Trust supports families with children at Moulton's primary schools, including voucher schemes at Christmas for families eligible for pupil premium, administered with full confidentiality through the schools.</p>
+      </div>
+      <div class="what-card">
+        <h4>Almshouses</h4>
+        <p>The Trust maintains almshouses providing accommodation for eligible residents, continuing a tradition of practical housing support for those in need.</p>
+      </div>
+      <div class="what-card">
+        <h4>Partner Charities</h4>
+        <p>The Trust contributes to other local charities and organisations such as Age UK that provide services to Moulton residents, extending its reach through collaboration.</p>
+      </div>
+      <div class="what-card">
+        <h4>Community Outreach</h4>
+        <p>Trustees liaise with schools, social workers, religious leaders, and community organisations to identify cases of need that might otherwise go unnoticed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <!-- HOW TO APPLY -->
+  <section id="apply">
+    <div class="apply-section">
+      <div>
+        <p class="section-label">Applying for Support</p>
+        <h2 class="section-title ruled">Who Can Apply &amp; How</h2>
+
+        <p style="color: var(--mid); margin-bottom: 1.5rem;">Support from the Moulton Poor Lands Charity is available to residents of the <strong style="color: var(--dark);">Parish of Moulton, Lincolnshire</strong> who are in need of financial assistance. Applications are treated with complete confidentiality. Anyone who thinks they may qualify is encouraged to apply.</p>
+
+        <p class="section-label" style="margin-bottom: 0.5rem;">You may be eligible if you are…</p>
+        <ul class="eligibility-list">
+          <li>A resident of the Parish of Moulton, Lincolnshire</li>
+          <li>In receipt of Pension Credit, Personal Independence Payment (PIP), or other means-tested benefits</li>
+          <li>Experiencing hardship due to the rise in fuel costs</li>
+          <li>In financial difficulty following changes to disability living allowance</li>
+          <li>A carer experiencing financial need</li>
+          <li>Anyone else who feels they are in need of financial assistance</li>
+        </ul>
+
+        <div style="background: var(--parchment); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0;">
+          <p style="font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin-bottom: 0.75rem;"><strong style="color: var(--dark);">What to expect when you apply:</strong></p>
+          <p style="font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin-bottom: 0.5rem;">The Trust will give detailed consideration to your finances and the reason for your request. This may include an interview — possibly at your home — by prior appointment. You will also be asked to complete an income, expenses and savings declaration.</p>
+          <p style="font-size: 0.88rem; color: var(--mid); line-height: 1.7;"><strong style="color: var(--dark);">Trustee meetings</strong> are held on the <strong style="color: var(--dark);">first Friday of December and April</strong> each year. Please submit your application no later than <strong style="color: var(--dark);">15th November</strong> for the December meeting, or <strong style="color: var(--dark);">15th March</strong> for the April meeting.</p>
+        </div>
+
+        <p style="color: var(--mid); font-size: 0.9rem;"><strong style="color: var(--green);">Confidentiality:</strong> All information given is kept strictly confidential. Applications are considered only by the Trustees and the Clerk to the Charity.</p>
+
+        <div style="margin-top: 1.5rem; padding: 1.5rem; border-left: 3px solid var(--gold); background: var(--parchment);">
+          <p style="font-size: 0.88rem; color: var(--mid); line-height: 1.7;"><strong style="color: var(--dark);">Request an application form or contact the Clerk:</strong><br>
+          Moulton Poor Lands Charity<br>
+          c/o Maples Solicitors LLP, 23 New Road, Spalding, Lincolnshire, PE11 1DH<br>
+          <strong style="color: var(--dark);">Tel: 01775 722261</strong><br>
+          <strong style="color: var(--dark);">Email:</strong> <a href="mailto:faye.blair@maplessolicitors.com" style="color: var(--green);">faye.blair@maplessolicitors.com</a></p>
+        </div>
+      </div>
+
+      <div>
+        <div class="apply-form-area">
+          <h3>Request a Grant Application Form</h3>
+          <p class="form-intro">Use this form to register your interest or request an application form. Alternatively, call or write to the Clerk directly. All information is kept strictly confidential.</p>
+
+          <form onsubmit="handleSubmit(event)" id="enquiryForm">
+            <div class="form-group">
+              <label>Your Full Name</label>
+              <input type="text" data-field="name" placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label>Address in Moulton Parish</label>
+              <input type="text" data-field="address" placeholder="Your address">
+            </div>
+            <div class="form-group">
+              <label>Contact Telephone</label>
+              <input type="tel" data-field="tel" placeholder="Phone number">
+            </div>
+            <div class="form-group">
+              <label>Nature of Request</label>
+              <select>
+                <option value="" disabled selected>Please select…</option>
+                <option>Regular financial support</option>
+                <option>One-off specific grant</option>
+                <option>Support for family with children</option>
+                <option>Almshouse enquiry</option>
+                <option>Referral on behalf of someone else</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Brief Details</label>
+              <textarea placeholder="Please briefly describe your circumstances and what support you are seeking…"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Enquiry</button>
+          </form>
+
+          <p class="form-notice">By submitting this form you consent to your details being held securely and used only for the purpose of assessing your application. Please note: where the Trust supplies equipment as part of a grant, that equipment remains the property of the Moulton Poor Lands Charity and may need to be returned when no longer required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- DOWNLOAD FORM -->
+<section id="download-form" style="background: var(--parchment); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; margin: 0 -2rem;">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+    <div>
+      <p class="section-label">Postal Application</p>
+      <h2 class="section-title" style="margin-bottom: 1rem;">Download &amp; Post Your Application</h2>
+      <p style="color: var(--mid); font-size: 0.95rem; margin-bottom: 1rem;">If you would prefer to apply by post rather than email, you can download our printable application form below. Complete it by hand and return it to the address shown on the form.</p>
+      <p style="color: var(--mid); font-size: 0.9rem; margin-bottom: 0.75rem;">The form covers three sections:</p>
+      <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0;">
+        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border); padding-left: 1.2rem; position: relative; font-size: 0.9rem; color: var(--mid);"><span style="position:absolute;left:0;color:var(--gold);">&#10022;</span> Personal &amp; household details</li>
+        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border); padding-left: 1.2rem; position: relative; font-size: 0.9rem; color: var(--mid);"><span style="position:absolute;left:0;color:var(--gold);">&#10022;</span> Income, expenses &amp; savings declaration</li>
+        <li style="padding: 0.5rem 0; padding-left: 1.2rem; position: relative; font-size: 0.9rem; color: var(--mid);"><span style="position:absolute;left:0;color:var(--gold);">&#10022;</span> Reason for grant &amp; supporting statement</li>
+      </ul>
+      <p style="color: var(--mid); font-size: 0.85rem;">Return completed forms to: <strong style="color: var(--dark);">Moulton Poor Lands Charity, c/o Maples Solicitors LLP, 23 New Road, Spalding, Lincolnshire, PE11 1DH</strong></p>
+      <p style="color: var(--mid); font-size: 0.85rem; margin-top: 0.5rem;">Remember the submission deadlines: <strong style="color: var(--dark);">15th November</strong> (December meeting) and <strong style="color: var(--dark);">15th March</strong> (April meeting).</p>
+    </div>
+    <div style="text-align: center;">
+      <div style="background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--green); padding: 2.5rem 2rem; display: inline-block; width: 100%; max-width: 320px;">
+        <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;height:56px;margin-bottom:1rem;">
+          <path d="M4 6a2 2 0 0 1 2-2h32l12 12v48a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z" fill="#EDE6D6" stroke="#C8B89A" stroke-width="1.5"/>
+          <path d="M38 4v12h12" stroke="#C8B89A" stroke-width="1.5"/>
+          <rect x="12" y="24" width="28" height="1.5" rx="0.75" fill="#2D4A2D" opacity="0.3"/>
+          <rect x="12" y="30" width="22" height="1.5" rx="0.75" fill="#2D4A2D" opacity="0.3"/>
+          <rect x="12" y="36" width="26" height="1.5" rx="0.75" fill="#2D4A2D" opacity="0.3"/>
+          <rect x="12" y="42" width="18" height="1.5" rx="0.75" fill="#2D4A2D" opacity="0.3"/>
+          <circle cx="50" cy="62" r="12" fill="#2D4A2D"/>
+          <path d="M50 55v10M46 62l4 4 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: var(--dark); margin-bottom: 0.4rem; font-weight: 400;">Grant Application Form</p>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem;">3-page printable PDF &mdash; complete by hand and post</p>
+        <a href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIgL0Y0IDUgMCBSCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMSAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL0Jhc2VGb250IC9UaW1lcy1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9UaW1lcy1JdGFsaWMgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YzIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNSAwIG9iago8PAovQmFzZUZvbnQgL1RpbWVzLVJvbWFuIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GNCAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0NvbnRlbnRzIDEyIDAgUiAvTWVkaWFCb3ggWyAwIDAgNTk1LjI3NTYgODQxLjg4OTggXSAvUGFyZW50IDExIDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9Db250ZW50cyAxMyAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCAxMSAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKOCAwIG9iago8PAovQ29udGVudHMgMTQgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgMTEgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyAxMSAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9BdXRob3IgKE1vdWx0b24gUG9vciBMYW5kcyBDaGFyaXR5KSAvQ3JlYXRpb25EYXRlIChEOjIwMjYwNDE2MTQ1NzAxKzAwJzAwJykgL0NyZWF0b3IgKGFub255bW91cykgL0tleXdvcmRzICgpIC9Nb2REYXRlIChEOjIwMjYwNDE2MTQ1NzAxKzAwJzAwJykgL1Byb2R1Y2VyIChSZXBvcnRMYWIgUERGIExpYnJhcnkgLSBcKG9wZW5zb3VyY2VcKSkgCiAgL1N1YmplY3QgKHVuc3BlY2lmaWVkKSAvVGl0bGUgKE1vdWx0b24gUG9vciBMYW5kcyBDaGFyaXR5IFwyMDUgQXBwbGljYXRpb24gZm9yIFNwZWNpZmljIEdyYW50KSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjExIDAgb2JqCjw8Ci9Db3VudCAzIC9LaWRzIFsgNiAwIFIgNyAwIFIgOCAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjEyIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI1MDEKPj4Kc3RyZWFtCkdhdTBFPnUwS18mcS9xRWVEIy8tZClHYjZTc05gO05zNyRCJlMqXjpNJjJCMiZGVlQlQTMySy1wO2NYNEclMGVwRkhgOmEvSy0kITxOIy01V0Ipci0hclYqT3M1USxlRF4uPFJqTVY0XVZTajNKMWBGYFtrX080b1BpXWhPJ18nMmprNGRtIi4pU1FXPDNTblozbXBdKEQyOEZfPWAtJjJOaSdRMjByJ0BMLGMzblxiQVxbTl8ramZIJk1iQkprazN1KSkmJWpfWTxOTGI8IVRKbyQsVDFxXjUuVic1MW9abCdsSCEwPl9aYzZfbUlvYUA4PEgvaFlvXFVoOzZOSnBAYUxOVmAzZjVGRVZlUUc8UGZvMVFEQixVTDJTWTorZGlzZkE+RVMvSk1oUVsuJW9XVk0tbjhtbyk5OmBDM1wsQlVUYFprTC46Qy5FVWVuXF1NOig3QTRvSDElUFRpWC1jYShoTWtwMzglLytUNTA8JildTFo9InBOYDNkUDpBNFgpQFZBQCxVP2ozY3M3XGdOcDIhKVZpckJRM2k1MytOVW50V0Iqa1JzXVxyOixJYW5cT0wuJmoma24/cjxQNyRMNzZdUEZKLmc9X2ZVb1ktRUUkRy0jXitTUGZKaCw7cGprKyZdLWNMU3QyNmFDKmBRJV9kJzwtSiFob2Y6MUprOUgnSi1dYmcnZkQoXXI4X2ZPVDlBUGNySS1QWjNZPnBhXW5oLCZGMzczMURMLEZLMEdGbE9uUVFRSj9zNCdzQ24mMms+UUdLPnAjOzhASklTKG5xTzAoZC5hTWRxajg5LiUyQ1tDQG45KT9hOkoiXiJfRys1KjohTyQzTj0+KTZMOVF0IlRCRnAucnQpZlFeSkRjVzJlOmFYcVgiY04ocTsnO0slajAtJUsrXTZFLF41SzNrPk1bL2pZUXFpUGpMQ2puMEw+XE5ASkJJQmA0cFlfS0RAI1QyMSdYP3Q0TCZHUFdxSiJVO19ETm0qNkEudXE4UCZWM28iPD05ay9mZU1LamYiV1lbYFU2cFJYLUo5YkBSM0AvIjRNLjNLISZvJlNEaV08alIwVmREVCR1Q0UxVlpjY1RlWE1SWjh0UW9MJSleKzxyZEE4c0wzcWYmXXRWKkhsbWk1dHMiOClSVm1bSiVhVjFlVUZEPio3IkBobVtuKlJZTz1vXmVnWG1TNy0wKjpTJjVdcVZmbUkwP2BEZ1c4aWJJcTpuLFxWVDBFJ00/SXFaYD9OQDlGNj1jU0I3TWFVOmQ2OFAlVzRvOGI6UDFuWCEvRV9FLlFOOTguQXRlUGdSJ0tLcl5NLiM0L2k/XUVPS0w8NUpJKy5eKWQuLV4rVyhWWURscUcjW1RnOGQ9V1k8XHRLIVJLN1YxZVlSTTREL2ctZ0c0LlA3SilkUE1GVEc/VkRnUisuVUxGUSNcPDp0Um5dKUBDNVJUJF9sOVM6Ll1JKGMqJW9QbSdjPE5FKDRLRlQ9UEc1L0JaOkg9YCNLLU1xTlNYTlsnbTNgTmlgJmZyblRbTVIoRGdxQmJON2IoLSMhLnJmLzpgI05IKW1VTTo6VXVSVUhtbTJpYDhNcSspSU41OlgpVU4vSW89KVlHaSQ3SUJfXz5RRHNlQGZwWHQnRHBFPWtxTGZvcGteTktAPEJGUy0rJW8wNFwsL0okPFsoP29vM1BoJ1BdQy4xNXEqcGBkYEpYPF9qZjQmIidOUD1hMFZMMmw/YT1eRE5NSiYrNFgmcTYybClLUltLX1tsSjBIJWtQRyxyW2VvPD9RZWdQOSJKODpBREcrRXBNMl5kJUAsdVtBZC1kNSwlX3J1S1Y1cTE3cCRCV1ciaUI/ISFOXllmO2o2bj1vcTxQRkJWbUBwXFJWIUAkRFZgZUYwZCdsIylsbipZaGFTX3BzKS1HOzQjUEhjPCcxTDVkPz5qcSNARzQlPzlZOSdqRk1mXyxZTiMmTFgjSWZeciJMXUxlLTBLNkdSX1NoSXEhbzZJLFwhWjoxWSdsND4lM2xGMVluJmZaL10qPGBsLixSS2sjJD4mRStHQyxVOVRMMyotOUFjbl9dTShSV1ZKPCxdcypwbG06PiNQZFxaSC4hciFoXmZgNkw0TDNgM0dlJ2QpajAkP1ViVVM8NVRMdENBcTY7akYnPTgrT1s8MG9TSlV1IjlXYGckZWZtXCgpU1I0SkdKdWZeSU5xbCdhXU4jNUorSipncjhAPm4+QW4zM1pRWlAkWkw0c3RMbm4jQC8ncClCZFpXa2xxWDBtT3NuXVEhby5FM1NzIztMTS9bb2NBP0RHaEcuP0JgZyNCZEo3TE1DSUFfbTRRUGhCaGJxQ09hSjhMW2lkdT8mMG4pdTU0TllROipCbCZDPiNmWjNzKjIiZjFnWlpjYlQrLVlqWnVJJl8vWldFJlpbSiFXRmZrTldDU25oU09bT1xXWFBcLixlOVQrZF8/LEU0ZTQ7OiYlRiNNa3ApPFRBXkJQMVAlUTA9P0l1QEdmNyk2bzEoUlg/YWZLVGoyMT9oZjEwa3RQWXRgWTNEWjc8QF87azgpTy1FTiF1RDZ0TF11YVxoazAjOnBiRDw1R0EjMSRLIWY0RlZyZ3VGS1pSVjQ6XDBINW8zVThQSVhjP1s0I202SGQ0N0M/XFlPKF9XOGg1OmI9RFUhRV5HNyQ7aG85bi45MixjT0c/V1JlM0A+ZTomTEM8WjFAdGQ+RlBCdD9XMmc7amBbUyorSmFOLGBWYmo/NypFVUJTbkA0VXJlUDAzTlI6QGFYVmEsPkouYUQiZi9MUCVfSVhCQ0cqTTxVQjwvciIpUkQ8XkBKIT8yL00nZyQybmBbPUQhdEU6KXVFIlFJWjxvJW1WXDkmPEpDPTpYa04yNStcRmxBJDUoR0s+JlM3PltnQmJlZmh0JmhBTGtvc09wWUMmX1M6OmVQQHNwOEE/REQ3OmZRbD80MEEvLDM0OUQ/TFI/L2tSRFRAdC9AMUlWI2t0NUlxcy1BW0ZxQCtfJ0ZPIyolVDBTOmpYKjFsZjdYSVcyLS4raUNUK3BlamhwNyU+RG1SImNwb0AnYDIhaWVRWm9TITRsNWpOSSJaXjctblhuNjs+KyQ2Wz00T04oWidGRzwvWlZEbW9uSTBvcz46JHBJL2M8PFBKKVlnWmdfRWxWMl1icFpUXzJNYl1HYERwUU9DZUFTImtnLUJLX29XMGF0Kl85JiNIckJeRmc4OmI6SWstP1E5YT9AYjhPKUtOJidBPVpNNFVccm4uRGc9OioubFlhSWkhQV4mQXRkWSlmLl1nN0pKMSNXMElEJXNxVGxaMiQjSlVdMUU7IVMoM34+ZW5kc3RyZWFtCmVuZG9iagoxMyAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAzNDM3Cj4+CnN0cmVhbQpHYXUwRj1gYD1XJnE4MDFec2M9cmIhcTJOQTZzRy0tbExWZFE8LXQtRyxrLE1PXk9YdE9dNTIiJmxuPVtoWmU8KjRSQTFFXG9RR1g+RS8lXUk9KyFbbyYoJDVzMCEmZy9za2VYI0QqNE1iQmxXOmslSGJEUE48YFdJKiRlZzBGXi9YOGxZaFw1SjBTSFVIW11sX0MtJWpec2ovNSZeU0tdT1RPVk9oPmQ8VTlBdFIqX0U8cUxDSl9vODhuQE81KUlWTy9kIWY1LS43NSM6bEpsN2ExNldVUS4iW0xwcWEqdCxxZD5wblhxNC9ZLVMuTjMuJ1suXT5ZKjVyOlVBQnJqbTNjPWMiOyNSXXN0YV5UVz9zJmp1OklKSVIyMFdVPy9TRFE/T0RmZlBcJixrYmFrWChBT1FXJiRfZUExcUc/ZWVST2lhYD8qaUozTFshQ1hSOHJVVTBGSkY/MHJVOD4nWXFjSkU4dThPcVoxcC4yRjMkTlY6bzclIjQjQSltciVrQ19PIzMsMFAxRDNrW1VCUGVlP3NkNio/PEI1IlEwMlg8Pk4zKCkuUz8iS0xJcEQ9IVlHN3QlSFlDQz0sZFMnc3RMSjBlSiIzYGErUV8mNXMyWGNidUhycWhpO0NWdT5rXlcpP1AhaCYmayElS0xyOSNEYW83JiUqWVsoYFQ/PWVzTDtnWz4sbm0tSlMxRltgK0tPWDNDZS8zM0I0WGBdcUcpciNjcCNUU1VgWHNobz1HMXBMaSstc11laEtpZSY1V2pEaT9wOXRiay88MjVuajB1aTo4UnVKL0BhXGtQN0VTNyVeY185cCk6OS9xYGhoN2Q1Nk43ImlRc1hyY1MuVGxSUFlMMlNsLF5oMVxOLEIzc2BdMTs3JFY1aDRiWTQnW2FAXCJJXjcnQEdmMEhVXEUpIkppWik9cEpsRGYyYWpULWljP0JfJWUtYW1FUUM1aEQ0I2wsRVIwR3IqJnEmOWY6O1JCWEVnQDNYWF00PFFUaDVlW1grOTtTRl0iIUlbOUdnJyJ1aWRhcm5ULigpP25fMWxIaGVPWXA5R0BhWCF0T2JCZCE1TmRBRmUoMisvajtcMFNFYS8iTW1SKltCR1VIQEpjVyxJOz5HRFouLW0vKDhYakxFNl4zPzFEOCtPXlkhRUkjR1xYaz9mJDcqU0EiZyZlQ1FAZyR1NWhbb29ybGgiVSY3cldyLSEnMzkxNEg1VCFPLV5rWFdZNkknbm06XypYOGddOWxQJlVMMGMibS9hRkcoLThXNktQKlpicy9xWSUiL0BkYmBlRFpiWkovLTFXQ11rKDJxUCQ2b2g3M1lUbW8nPiwkRVEnLW5ET1NxJmpYQyJeNlImMixUMy9uPGghVV83X2xiNjQ7JkdtXWdea0NSc14kPTosRGFUKyklKHAlTnFSUCMoTmYmQk1lTko8J1w4STZEKmowMHIrIV1sSzpHQiZvaSpFYVM6UjY4VTJMb2EnSTE0WEVOO2IrOVdFc0dXNltfXTxnKVtrLGxaJ2hdPGopNUYtP2YoNSk4VUNSZTVYLkBaaChDJCtnS2RMU0NgZlEtLTxBXSw7TkhmbCNuU2p0NlQkLXFpWHM+Y1YrVDlkPmpTLFQhQ3F1aSRMUDk6KCNTSVUtdSknSylwbDkyTjZuVkosbTJNPEBDRUlpa2RyTlE9VVQ6NjJCJ2RQLTRkWUZvKnQyUjcoblFNRSI+JjgxZ2wiPGQoMSErWSZjNC88amlOTChHbVhYNiomJHEiLSRDOilvSmRqYkRSZnFRQC09Rk0oayNObE9BMVEoLl1mIi5EcnNjYmJmKW8rSEksIUAjMWFoPDFZQ2RLMSFvSDAkZnU3P0BKRiNnaldLSjlzbHRJajRcKUVWaldrPyNXQHE+MFcqQTU1RTBCYjwvZWAlQCQ6XDtPRHAvUWVFQ3JEJGc5UDM1NCo9dTgoTl4uQWMiQUhxOjFGYFEhYD5AME90OWZwMHI9OyE4R05CSDZEQW89QD8/KlRPazxiSzliaDZlJkIvRz1yY2g0ZDtUWDpwKjx0ZCRnJWQ/b0dzQjRsTl4tSWlTMk8sYjFGWygpLk9OV0ZNVEEmPHBOP14mRlo/L0FjJTotZEMkN3FoME5sb0ZCSm1dJCpSbUZQQjxARDpHZyI2cVdxXnFPY0psRjFySi1KKmk1bzlfaUZxZiY/aiVePilwKW09a1B1UD8lQiNYImZOSV0lM1Q9S14pclpyaSRzKEc9N0hKSFVFQE8zUzYkX1xOPWczPVklLk9vL3R1Q1RPKWMlNi5yLGEhYSRyR0dLPzhiLzJnZ1FaZ2NiZC5eckdHRyEwbiNxTmJmZiYlS19aLEswVjROKCc8RC5YRippIk05LzVoTUhsYzFtWjNBV2s0ZE5WYVlEPzA4ZDgsWywmMV1kLiFIOTJaNTFpNkNjIlAuX2sqa2EwXEFESi1cZGx0PVMnT0MhMSw7Qk5HJ0UiL2QuMDQ3QShQOyUwME5QOENmMEVDQVhCcGxNLG5oXWxWS0oiMDBxO29eVjxYQmdtQ0RHLVNFSyg8aClAMWMyYlkhTDthUWllSydoVCw6OzAzZ2lcSDshQztTQWMmXVIwc0lyIUs2aD5qJSUpZiFIcmk1Py1xQklDPkYiV0A1J2x1XCIiaV84J1c2WFcyKTBXUilOaypYSXM9a1wnPV44WmM0SWopQnBAaF5GWDcuVWREYXRicD1IJ3RdcDYiWGY0MVJhOlw6M0duPTlaPGZpLkYmKTomLU1hajhvT2QxQTRlSlM1aV1mK1NCNDglK0leIzljVUc2KVlZPyRSJEZDKHVnLz46RVJmJ2NoNVFSb0RITk8jaiwuJ2YwZ2MuJmRROzZgdUlCQVQ0MS5LVyRgLytMUmojdFdoJGtxPlY7KCVHK11oaCxGamQ+bUpwIWopUi9MbUZoXnJRYjNyTzQ9aEsuXWQvKUJgIW49Zy47OCtRVDw4W0lPazZPUkhwTC5YMT1qSDNRTjEyKiNYSE9vbzs5WlQmLmguTj8lSyhOZ1socUlxOEJBcnIwWzY/YTcvZmsnYT0yKVRRPSRlc1kkWTVccUdpVDlrKlA3OWVSLkVRKj5dIW1jTUFDWCVVNEFwUiEwQ25obWJYIjI2dD0oRjwtX2dmYG48Y0NiMXFaQ2BSbUg4dHUzbkxjPjFlckEqNUdjcGFQLC1wS0YrTSFuYk4iSGlmQ103KnBkbFhyQD1SXClrL002KjtaYmVDJyhTT2BGbi5nMUxfUiJMWS8iW2FsMiRpbmxfYWlbZUtsRVNgJVAxOzpyViRVb2NdMEFSbjNqI1dTXm5Uamg3dEYxOzZHZ2xzNUB1RGshLDwnRzpSKVwzczQxaVBpOlxgNmUrciczVDVXa1VDTlQuS1EtPnAjclBhLzkvZ28tJG1tcVg8LDByQnRDSUBcME1vKFBkJkYhYURHakVoZ2xcMV8xbD0vaFc+X2UrMFJ0QSRzVTNPI25oPTM2bV5TNURMZFM0WShMK10qLW8/JUBrWjttdWByPkUxTD5lcC0vYUF1W0BmPmY6QG5GXEQ4OGM0Z0diOkhyOk8xLnN1QjUlTS0nUl9kZW40TWUySGxvUCIiMiUiJD1RKEtQSzdHSiMiNjlcLk0pRl5UamAuQlRCY1tnX2duXltvTykjalEiYmomLS40S01vXStGNV5LLzdUQz1nRzNSNlhTSjI9QVxWOUM8VSg8aCZtQiQ8UyY1XmciZzJxSD04YS1mW1AmYVljKCdHXi4iTT02YCdNMDtpVnBsRl50b3NQQV4pbUxxXWwnXzxyZ0BYIjwpR0NSKEFjZC1wU1VPLVNGIkVOdERtZVBpMVtlT280SnBaY2Q0YEYhZWJEZmtwYmF0Vjc7UnU0TWFbITVnMiNBKWRrbGJfTmlAJyRkSjszL1JYKigmU1JLMGVZQi5GZSMxLXVmLjhlPWlMVjdoX0xLQT90VUorM0pGWkAjVFY2MDBuZmZOS0tsP1QwOVE/XF1uRyhRLVdZaEc2PHUpTWJMTTZrMVBlVGRJL19eJSkrW15vIllhUGMsL11dS28/M1o5TW9eXSZjYElVTT9Majg0S29KP2pwX2QpaG44aSxHN21KaUhaazhrOm1RSjk+bFBlNChzdVg1b3FOU19yOzxqKTJuMSUrZVduPmQzPGBvUiZbW2hFPCEhNDRVPHJdWFYwZUZFL2NhKSlLbmNmcjAnPSk0Ki5TKTNmK24qPVUpXmB0LWw2MDVdL2RwPSVGVSdHVkQ0N21KLUUjYWJqND0wQTRGWGsjLkFQaWdTWUFITyxIclEwXWA9N2IqajsyYDNVPTtrbmBQKjlWRGMuSWlvQVVUYS5kYSI7aWEjNmA2JkUtbCsvciVzcjk+PzNbMz5ZMy8pcnJFMyVzKWZVOzchT2RXPDgqRy1jMmFUcUNJO2wpa2ZwVEhEa19SPiVgVERgcyk3NyNYSmgvUkhFaCpNUFpuJi0mQ0c7QiU2RTk0UkwzMUVHV0VMQ1E4bXVqayIuSlQwPkJMb3BhL1duJjZtaHNWSycoQVZmNzZBLEhINmspNGlxXjpnRi1gMEpEVTJHXSRvP1p+PmVuZHN0cmVhbQplbmRvYmoKMTQgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMTgyMgo+PgpzdHJlYW0KR2F0bTs5bEpjVSZBQHNCYmMsN1hBJko3T3FHYkw5PlFfRjk5JEFHRDA5ITlEPUBmNVs7RGVVTGE3aC8zOzVFNCglVV1GImlTaWhgYmcpXDo2Vlw2bW5gS2w5TVdkdSorJFhpK0pzJi02YD1zVkIxZT5uL1ttakxxOVouTyglMz5GIys0InU/QzhITU4kSVoxa19KMkcjWkhSP2FXVXIlSUU1bWlzQFJqKlBLPyVwVUEmMW46XG86PjUxLVdGVFI1KHQmcT5QTSk3KlQuN0kiTGomTGJFQEwrITlpc1QqZE5JLjR1WG9mSiJtNztIVj5NcENDWCFQKHQzPypaaT1DRzwqPS1kKyc1KWo0aVlcRGo6L29hYlJRck8uUl8tRG5KPHA+OkBkbVpnX2dBVk0tbWVtbjo1cVVoKlNGQmpSI1xwPDFcKy5FY0doclRyJUcrcj9jaWJXSFFMPFFsaiRtbV0iVUEodTcjSU9zXEg+cV5VcFBAQnFTWmFxUDhdIjhvUFBFN2NhTThodEY0L14xXT8tXWJSblhUJFFIcy8pbUM2QEtLN0tYLkhmNzNEcEJvZzJkYSJlcDkqMFVhJiQ6Y0ZsR3NOJU9XMEEjYChmIUwhaUZmQWUxSF8pJz5MMSM4ZSNgSXFlSEFwXEVOczVfbEM/QS1nSW8qQzgyK2I6NzNJMSJDSUpvWC4iMV81V0wvbjlHXll1UlUuSWJAJU11cWRPQWQ0MUdpNWdRYzNdM15wYV5CVTBQcSpFW0gtZT0ucTFqJ146N2BPQURPQ1ZwVmdgSShISUheZUdoL0dCMyEtMkUsVDdkUXJVT0lyTiVqZSRWI3MqYUpfQ2BAJygxZmNiNkIuJlxHVVJcLks3YitXTC4/QixOJCpfZHVFRmtcVmNEPzIzSHJqVE1eVSk0YmInXilTS2wkVmU/bzdNIlA/RydIQjxqPiVWLiV1LzFGLyJkQCtbQj5LNWBcZWVmYS1oImFULC1FNDsvK2o6JG9mVnQqQixdbzhuZF9zRUpVK14sTmNfZGhlN2FzUzBtODFkdV1xRHMyajFLXF0iX0NxP3NeZWhuZXQuXFwsVkZGSF8wPTJjLWRYZyE9P1AwZDNZOW8mMlt0PTtAPTwtTGYjVkZnYW5YKyc8SlxWRCs+OFQrLmxORyhJRy5ZNjFrKU9zOilbXDQuN1g1V3Nnb25dX3FScWg0OEtPaGk+NDBpIXBvL0ZALCljQiwtbE43UEc1YW5xblwibGonaUx0QkBxO0grZykxdUQzQj86LGpgM1wwY1k8cEBoLD51NEJPSSg9ME8lLSEhbEdVT1pfNEtFWUBNa0EwT0cwRHFGJjRYVFNLWjc4WlFBRj1pVTkzZmdvMG5SV21bPm9GMGhfZj5UamBicj4vVWNkTytnWCkkL2I3c1pOZyQlamgkMVQzWlkzOHBKNV9UWUk+Z04wZHFhMXMlb3QvXSgyZk1ONy1DXEtWQlBcXCtYQTpBVUBTcDFlaSRwUWM2XVdsQmBdXDM+PSc7SEhQQGpWWidRQixeMUNJNzldLmBcbSlQbXA3PV8lOSFQJC9tcCVYYDk4aiYrZDN0aC88WSRWaTIxKFA6KlQpPDlXRGgqSShvUiYmOkA0a0Y0NjdPcHJxbk89LF9RPS01QDdjZyIwW3BtSzRcMk5waz4uYidOdUtAQSRrbEJqXWU+JDJwM01sTmJZak8yQzIpKEVrNUNSRlVJaEIlO0RGTWdbTCJzPloyMycvYllpTCk2NFFWNz85YC8pLW11JlNgTGRyQ18kR0ZJW3VjakRRQUtjRldiXGxpTj5lci9hSSREX3QoUTtuIldqOGgkL3EjKkd0S1huIihRRlInP0hBLWM3QlBcTjtAUFApWk5uIi1hNCVoREMqdDBvK2JyW2E2RUMuLUUsb2RlJzE7Pjk+PiljQ2VdMllIQDBwQzlbZTRmQ1JfTTo3ck5zNTQ2SkZnLm48KEEjNTl1IzxnXjdUTGUjdWVAaGdsYDVUJ1shQlM8UUZvbyhgZEZDXFI5ZGAxWCh0dVhrbzNhWTJpamZCdVwta0lQOjdyVG1JZEMjRUhFZCg5NDtLJnBtV2lZZC1XJUYpaE0hImUtVycuM09tVTNDZy5uO11ZQjQoNl8wLG5BbUgvREFvJDZCO0tMLmtUPVNBY0tnQTRWcjEhMWBxTW1dck1VRVUyXSxMRURVUldyTUdCOWxLLEI2VypuNks9N1tOOlhOLCxlVHBoOCpOL0ZKV0AldDdJO2BOPTtbVystZjlAYjwxQyo7Ni1oNVdaaDtJTnMlPWtvN2IsYTNoTUtsRj86akdtViJGRi1fYnE0MzVyMTZ0aTxvQUxwQnQ9UzVyMlUsKDZYR2snJ3MpYjQ/Vi9gMUE9KC1JPyNeaT1sYldHZCknSjotY2lBPk1LSlBWOi0tXSN+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDE1CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTIyIDAwMDAwIG4gCjAwMDAwMDAyMjkgMDAwMDAgbiAKMDAwMDAwMDMzNyAwMDAwMCBuIAowMDAwMDAwNDQ3IDAwMDAwIG4gCjAwMDAwMDA1NTYgMDAwMDAgbiAKMDAwMDAwMDc2MSAwMDAwMCBuIAowMDAwMDAwOTY2IDAwMDAwIG4gCjAwMDAwMDExNzEgMDAwMDAgbiAKMDAwMDAwMTI0MCAwMDAwMCBuIAowMDAwMDAxNTczIDAwMDAwIG4gCjAwMDAwMDE2NDUgMDAwMDAgbiAKMDAwMDAwNDIzOCAwMDAwMCBuIAowMDAwMDA3NzY3IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPDliOWE3ZWQ5MDc2OTVkMTNkMWJmOWQxN2I5ZWQzMTE0Pjw5YjlhN2VkOTA3Njk1ZDEzZDFiZjlkMTdiOWVkMzExND5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gMTAgMCBSCi9Sb290IDkgMCBSCi9TaXplIDE1Cj4+CnN0YXJ0eHJlZgo5NjgxCiUlRU9GCg==" download="Moulton_Poor_Lands_Charity_Application_Form.pdf"
+           style="display:block; background: var(--green); color: #fff; text-decoration: none; padding: 0.85rem 1.5rem; font-family: 'Source Serif 4', serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s;">
+          Download Form (PDF)
+        </a>
+        <p style="font-size: 0.75rem; color: var(--muted); margin-top: 1rem;">Requires a PDF viewer such as Adobe Reader</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact the Charity</h2>
+    <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 0.5rem;">To request an application form or make an enquiry, please contact the Clerk to the Charity by post, telephone, or email.</p>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <h5>Postal Address</h5>
+        <p>Moulton Poor Lands Charity<br>c/o Maples Solicitors LLP<br>23 New Road, Spalding<br>Lincolnshire, PE11 1DH</p>
+      </div>
+      <div class="contact-item">
+        <h5>Telephone &amp; Email</h5>
+        <p><strong style="color: var(--gold-light); font-size: 1.15rem;">01775 722261</strong><br>
+        <span style="font-size: 0.85rem; opacity: 0.65;">During normal office hours</span><br><br>
+        <a href="mailto:faye.blair@maplessolicitors.com" style="color: var(--gold-light); font-size: 0.88rem; word-break: break-all;">faye.blair@maplessolicitors.com</a></p>
+      </div>
+      <div class="contact-item">
+        <h5>Registered Charity</h5>
+        <p>Charity Commission No.<br><strong style="color: var(--gold-light); font-size: 1.1rem;">216630</strong><br>
+        <span style="font-size: 0.85rem; opacity: 0.6;">Moulton Poor Lands Charity<br>(Inc. Moulton Minor Charities)</span></p>
+      </div>
+    </div>
+
+    <p class="contact-note">The Charity is administered by volunteer Trustees drawn from the local community. Enquiries are handled with complete confidentiality. Application forms are available on request from the above address or by email. Completed forms should be returned to the same address for consideration at the next Trustee meeting.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    Moulton Poor Lands Charity &nbsp;&mdash;&nbsp; Incorporating the Moulton Minor Charities
+    <div class="charity-number">Registered Charity No. 216630</div>
+  </div>
+  <div class="footer-right">
+    Serving the Parish of Moulton, Lincolnshire<br>
+    Administered by Maples Solicitors LLP, Spalding &nbsp;·&nbsp; Tel: 01775 722261
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name    = form.querySelector('input[data-field="name"]').value;
+    const address = form.querySelector('input[data-field="address"]').value;
+    const tel     = form.querySelector('input[data-field="tel"]').value;
+    const nature  = form.querySelector('select').value;
+    const details = form.querySelector('textarea').value;
+
+    const body = encodeURIComponent(
+      "Name: " + name + "\n" +
+      "Address: " + address + "\n" +
+      "Telephone: " + tel + "\n" +
+      "Nature of request: " + nature + "\n\n" +
+      "Details:\n" + details
+    );
+
+    const subject = encodeURIComponent("Moulton Poor Lands Charity – Enquiry from " + (name || "website visitor"));
+    window.location.href = "mailto:faye.blair@maplessolicitors.com?subject=" + subject + "&body=" + body;
+
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Opening your email client…';
+    btn.style.background = '#3D6B3D';
+    setTimeout(() => {
+      btn.textContent = 'Submit Enquiry';
+      btn.style.background = '';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
